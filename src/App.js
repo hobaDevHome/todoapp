@@ -6,18 +6,23 @@ import "./App.css";
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    // Mock API call to fetch tasks
-    const fetchTasks = async () => {
-      // Simulating API call delay
+  const fetchTasks = async () => {
+    return new Promise((resolve) => {
       setTimeout(() => {
-        setTasks([
+        resolve([
           { id: 1, text: "Learn React", completed: false },
           { id: 2, text: "Build a Todo App", completed: false },
         ]);
-      }, 1000);
+      }, 1000); // Simulate network delay
+    });
+  };
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksFromApi = await fetchTasks();
+      setTasks(tasksFromApi);
     };
-    fetchTasks();
+    getTasks();
   }, []);
 
   const addTask = (task) => {
