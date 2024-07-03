@@ -1,5 +1,41 @@
 .add-todo {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+.add-todo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field {
+  width: 80%;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+}
+
+.add-button {
+  width: 80%;
+  background-color: #f37336; /* Orange background */
+  color: #ffffff; /* White text */
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.add-button:hover {
+  background-color: #bb430a; /* Lighter orange background */
 }
 
 .add-todo input {
@@ -11,4 +47,8 @@
   padding: 10px;
   font-size: 16px;
   margin-left: 10px;
+}
+.done-image {
+  width: 250px;
+  height: auto;
 }

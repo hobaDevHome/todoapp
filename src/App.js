@@ -4,38 +4,43 @@ import AddTodo from "./components/AddTodo";
 import "./App.css";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-
-  const fetchTasks = async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve([
-          { id: 1, text: "Learn React", completed: false },
-          { id: 2, text: "Build a Todo App", completed: false },
-        ]);
-      }, 1000); // Simulate network delay
-    });
-  };
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const getTasks = async () => {
-      const tasksFromApi = await fetchTasks();
-      setTasks(tasksFromApi);
+    // Mock API call (you can replace this with a real API call)
+    const fetchTodos = async () => {
+      const mockTodos = await new Promise((resolve) =>
+        setTimeout(
+          () =>
+            resolve([
+              {
+                id: Date.now(),
+                title: "Sample Todo",
+                description: "This is a sample description",
+                completed: false,
+              },
+            ]),
+          1000
+        )
+      );
+      setTodos(mockTodos);
     };
-    getTasks();
+    fetchTodos();
   }, []);
 
-  const addTask = (task) => {
-    setTasks([...tasks, { id: Date.now(), text: task, completed: false }]);
+  const addTask = (todo) => {
+    setTodos([...todos, { ...todo, completed: false }]);
   };
 
-  const removeTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+  const removeTodo = (index) => {
+    const newTodos = todos.filter((e) => e.id !== index);
+    setTodos(newTodos);
   };
 
   const toggleTaskCompletion = (id) => {
-    setTasks(
-      tasks.map((task) =>
+    console.log(id, "toggle");
+    setTodos(
+      todos.map((task) =>
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
@@ -44,17 +49,17 @@ function App() {
   const memoizedTodoList = useMemo(
     () => (
       <TodoList
-        tasks={tasks}
-        onRemove={removeTask}
+        todos={todos}
+        onRemove={removeTodo}
         onToggle={toggleTaskCompletion}
       />
     ),
-    [tasks]
+    [todos]
   );
 
   return (
     <div className="App">
-      <h1>Todo List</h1>
+      {/* <h2>Todo List</h2> */}
       <AddTodo onAdd={addTask} />
       {memoizedTodoList}
     </div>
