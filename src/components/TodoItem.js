@@ -5,7 +5,6 @@ import { CiViewList } from "react-icons/ci";
 import "./TodoItem.css";
 
 function TodoItem({ todo, onRemove, onToggle }) {
-  console.log("inside todo item", todo.id);
   return (
     <li
       className={`todo-item ${todo?.completed ? "completed" : "incompleted"}`}

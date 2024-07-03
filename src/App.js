@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useMemo } from "react";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
+import { FaPlus } from "react-icons/fa";
+import done from "./images/Done.png";
 import "./App.css";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [showAddTodo, setShowAddTodo] = useState(false);
 
   useEffect(() => {
-    // Mock API call (you can replace this with a real API call)
     const fetchTodos = async () => {
       const mockTodos = await new Promise((resolve) =>
         setTimeout(
@@ -30,6 +32,10 @@ function App() {
 
   const addTask = (todo) => {
     setTodos([...todos, { ...todo, completed: false }]);
+    setShowAddTodo(false);
+  };
+  const onCancel = () => {
+    setShowAddTodo(false);
   };
 
   const removeTodo = (index) => {
@@ -38,7 +44,6 @@ function App() {
   };
 
   const toggleTaskCompletion = (id) => {
-    console.log(id, "toggle");
     setTodos(
       todos.map((task) =>
         task.id === id ? { ...task, completed: !task.completed } : task
@@ -59,9 +64,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h2>Todo List</h2> */}
-      <AddTodo onAdd={addTask} />
+      <img src={done} alt="Application icon" className="done-image" />
+      {showAddTodo && <AddTodo onAdd={addTask} onCancel={onCancel} />}
       {memoizedTodoList}
+      <button
+        onClick={() => setShowAddTodo(!showAddTodo)}
+        className="new-todo-button"
+      >
+        <FaPlus style={{ marginRight: 10 }} /> add new task
+      </button>
     </div>
   );
 }

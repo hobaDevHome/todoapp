@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import done from "../images/Done.png";
+
 import "./AddTodo.css";
 
-function AddTodo({ onAdd }) {
+function AddTodo({ onAdd, onCancel }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -17,7 +17,6 @@ function AddTodo({ onAdd }) {
   return (
     <div className="add-todo">
       <form onSubmit={handleSubmit} className="add-todo-form">
-        <img src={done} alt="Done" className="done-image" />
         <input
           type="text"
           value={title}
@@ -31,9 +30,14 @@ function AddTodo({ onAdd }) {
           placeholder="Add a brief description"
           className="input-field"
         />
-        <button type="submit" className="add-button">
-          Add Task
-        </button>
+        <div className="form-buttons">
+          <button type="submit" className="add-button form-button">
+            Add Task
+          </button>
+          <button className="form-button cancel-button" onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -33,7 +33,7 @@
   margin-bottom: 5px;
 }
 .incompleted {
-  background-color: rgba(86, 148, 242, 0.2);
+  background-color: rgba(86, 148, 242, 0.1);
 }
 .completed {
   background-color: rgba(83, 194, 197, 0.2);

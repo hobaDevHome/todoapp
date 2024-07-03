@@ -19,14 +19,16 @@
   padding: 10px;
   margin: 10px 0;
   border: none;
-  border-radius: 16px;
+  border-radius: 10px;
   font-size: 16px;
 }
+input:focus {
+  outline: none;
+}
 
-.add-button {
+.form-button {
   width: 80%;
-  background-color: #f37336; /* Orange background */
-  color: #ffffff; /* White text */
+  color: #ffffff;
   padding: 10px;
   margin: 10px 0;
   border: none;
@@ -35,10 +37,19 @@
   cursor: pointer;
 }
 .add-button:hover {
-  background-color: #bb430a; /* Lighter orange background */
+  background-color: #db5a1f;
 }
-
-.done-image {
-  width: 250px;
-  height: auto;
+.form-buttons {
+  display: flex;
+  width: 80%;
+}
+.add-button {
+  margin-right: 10px;
+  background-color: #f37336;
+}
+.cancel-button {
+  background-color: #2bafe7;
+}
+.cancel-button:hover {
+  background-color: #0e94cd;
 }
