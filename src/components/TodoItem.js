@@ -9,7 +9,6 @@ function TodoItem({ todo, onRemove, onToggle }) {
   return (
     <li
       className={`todo-item ${todo?.completed ? "completed" : "incompleted"}`}
-      onClick={() => onToggle(todo.id)}
     >
       <div className="todo-data">
         <CiViewList className="list-icon" />

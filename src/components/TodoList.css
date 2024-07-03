@@ -1,0 +1,32 @@
+.notodos {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid rgb(170, 165, 165);
+  padding: 20px;
+
+  border-radius: 10px;
+}
+
+.todosSectionTitle {
+  background-color: #5694f2;
+  padding: 10px 20px;
+  width: 180px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.todosSectionText {
+  color: aliceblue;
+  font-weight: bold;
+}
+
+.todosSectionCount {
+  color: rgb(62, 67, 64);
+  font-size: 14px;
+  margin-left: 5px;
+  font-weight: normal;
+}
+
+.completedTilte {
+  background-color: #53c2c5;
+  margin-top: 20px;
+}

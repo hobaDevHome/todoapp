@@ -16,7 +16,7 @@
 
 .list-icon {
   font-size: 50px;
-  color: #f96e9b;
+  color: #f26e56;
   margin-right: 10px;
 }
 .todo-details {
@@ -32,11 +32,11 @@
 
   margin-bottom: 5px;
 }
-.completed {
-  background-color: #bfffe0;
-}
 .incompleted {
-  background-color: #fcf2e7;
+  background-color: rgba(86, 148, 242, 0.2);
+}
+.completed {
+  background-color: rgba(83, 194, 197, 0.2);
 }
 .todo-item-icons {
   display: flex;
@@ -48,7 +48,7 @@
 
 .trash-icon {
   font-size: 18px;
-  color: #f96e9b;
+  color: #f26e56;
   margin-right: 10px;
   cursor: pointer;
   margin-left: 10px;
