@@ -3,6 +3,7 @@ import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 import { FaPlus } from "react-icons/fa";
 import done from "./images/Done.png";
+import { motion } from "framer-motion";
 import "./App.css";
 
 function App() {
@@ -65,7 +66,16 @@ function App() {
   return (
     <div className="App">
       <img src={done} alt="Application icon" className="done-image" />
-      {showAddTodo && <AddTodo onAdd={addTask} onCancel={onCancel} />}
+
+      {showAddTodo && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <AddTodo onAdd={addTask} onCancel={onCancel} />
+        </motion.div>
+      )}
       {memoizedTodoList}
       <button
         onClick={() => setShowAddTodo(!showAddTodo)}

@@ -1,5 +1,6 @@
 import React from "react";
 import TodoItem from "./TodoItem";
+import { motion } from "framer-motion";
 import "./TodoList.css";
 function TodoList({ todos, onRemove, onToggle }) {
   const incompleteTodos = todos.filter((todo) => !todo.completed);
@@ -25,12 +26,14 @@ function TodoList({ todos, onRemove, onToggle }) {
 
       <ul className="todo-list incomplete">
         {incompleteTodos.map((todo) => (
-          <TodoItem
+          <motion.div
             key={todo.id}
-            todo={todo}
-            onRemove={onRemove}
-            onToggle={onToggle}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <TodoItem todo={todo} onRemove={onRemove} onToggle={onToggle} />
+          </motion.div>
         ))}
       </ul>
       {completeTodos.length > 0 && (
@@ -47,12 +50,14 @@ function TodoList({ todos, onRemove, onToggle }) {
 
       <ul className="todo-list complete">
         {completeTodos.map((todo) => (
-          <TodoItem
+          <motion.div
             key={todo.id}
-            todo={todo}
-            onRemove={onRemove}
-            onToggle={onToggle}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <TodoItem todo={todo} onRemove={onRemove} onToggle={onToggle} />
+          </motion.div>
         ))}
       </ul>
     </div>
