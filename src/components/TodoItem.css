@@ -2,15 +2,65 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+
   margin-bottom: 10px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
+}
+.todo-data {
+  display: flex;
+  flex-direction: row;
+
+  padding: 10px;
 }
 
-.todo-item.completed span {
-  text-decoration: line-through;
-  color: #888;
+.list-icon {
+  font-size: 50px;
+  color: #f96e9b;
+  margin-right: 10px;
+}
+.todo-details {
+  font-size: 18px;
+}
+.todo-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.todo-description {
+  font-size: 14px;
+
+  margin-bottom: 5px;
+}
+.completed {
+  background-color: #bfffe0;
+}
+.incompleted {
+  background-color: #fcf2e7;
+}
+.todo-item-icons {
+  display: flex;
+
+  align-items: center;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.trash-icon {
+  font-size: 18px;
+  color: #f96e9b;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.check-icon {
+  font-size: 18px;
+
+  cursor: pointer;
+}
+.trash-icon:hover {
+  color: #ff1a1a;
 }
 
 .todo-item button {
@@ -21,7 +71,12 @@
   cursor: pointer;
   border-radius: 5px;
 }
+.check-icon-bg {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
 
-.todo-item button:hover {
-  background: #ff1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

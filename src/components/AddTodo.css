@@ -38,16 +38,6 @@
   background-color: #bb430a; /* Lighter orange background */
 }
 
-.add-todo input {
-  padding: 10px;
-  font-size: 16px;
-}
-
-.add-todo button {
-  padding: 10px;
-  font-size: 16px;
-  margin-left: 10px;
-}
 .done-image {
   width: 250px;
   height: auto;
