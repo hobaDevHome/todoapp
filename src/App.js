@@ -13,27 +13,37 @@ function App() {
   useEffect(() => {
     // Function to fetch todos from   API
     const fetchTodosFromAPI = async () => {
-      const mockTodos = await new Promise((resolve) =>
-        setTimeout(
-          () =>
-            resolve([
-              {
-                id: new Date().getTime(),
-                title: "Study React",
-                description: "Implementation of a React project",
-                completed: false,
-              },
-            ]),
-          1000
-        )
-      );
-      return mockTodos;
+      try {
+        const mockTodos = await new Promise((resolve) =>
+          setTimeout(
+            () =>
+              resolve([
+                {
+                  id: new Date().getTime(),
+                  title: "Study React",
+                  description: "Implementation of a React project",
+                  completed: false,
+                },
+              ]),
+            1000
+          )
+        );
+        return mockTodos;
+      } catch (error) {
+        console.error("Error fetching todos from API:", error);
+        return [];
+      }
     };
 
     // Function to fetch todos from local storage
     const fetchTodosFromLocalStorage = () => {
-      const storedTodos = localStorage.getItem("todos");
-      return storedTodos ? JSON.parse(storedTodos) : [];
+      try {
+        const storedTodos = localStorage.getItem("todos");
+        return storedTodos ? JSON.parse(storedTodos) : [];
+      } catch (error) {
+        console.error("Error fetching todos from local storage:", error);
+        return [];
+      }
     };
 
     const fetchTodos = async () => {

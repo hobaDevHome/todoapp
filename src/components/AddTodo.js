@@ -5,14 +5,25 @@ import "./AddTodo.css";
 function AddTodo({ onAdd, onCancel }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [titleEerror, setTitleError] = useState("");
+  const [desError, setDescError] = useState("");
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !description) return;
+    if (!title) {
+      setTitleError("Title is required.");
+      return;
+    }
+    if (!description) {
+      setDescError("Description is required.");
+      return;
+    }
     onAdd({ id: Date.now(), title, description });
     setTitle("");
     setDescription("");
+    setTitleError("");
+    setDescError("");
   };
 
   return (
@@ -25,12 +36,18 @@ function AddTodo({ onAdd, onCancel }) {
           placeholder="Add a new task title"
           className="input-field"
         />
+        {titleEerror && !title && (
+          <p className="error-message">{titleEerror}</p>
+        )}
         <input
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Add a brief description"
           className="input-field"
         />
+        {desError && !description && (
+          <p className="error-message">{desError}</p>
+        )}
         <div className="form-buttons">
           <button type="submit" className="add-button form-button">
             Add Task
