@@ -19,6 +19,11 @@ You can check out the live demo of the project [here](https://todoapp-six-hazel.
 - CSS
 - Framer Motion (for animations)
 
+  ## Documentation
+
+- [Design Decisions](https://github.com/hobaDevHome/todoapp/blob/master/Documents/Design_Decisions.md)
+- [Codebase Overview and Code Review](https://github.com/hobaDevHome/todoapp/blob/master/Documents/Code_Review.md)
+
   ## Getting Started
 To run the application locally:
 1. Clone this repository.
