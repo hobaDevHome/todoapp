@@ -16,10 +16,10 @@ function TodoList({ todos, onRemove, onToggle }) {
         <div className="todosSectionTitle">
           <p className="todosSectionText">
             On going
-            <spn className="todosSectionCount">
+            <span className="todosSectionCount">
               {`(${incompleteTodos.length})`}{" "}
               {incompleteTodos.length > 1 ? "Tasks" : "Task"}
-            </spn>
+            </span>
           </p>
         </div>
       )}
@@ -40,10 +40,10 @@ function TodoList({ todos, onRemove, onToggle }) {
         <div className="todosSectionTitle completedTilte">
           <p className="todosSectionText">
             Completed
-            <spn className="todosSectionCount">
+            <span className="todosSectionCount">
               {`(${completeTodos.length})`}
               {completeTodos.length > 1 ? "Tasks" : "Task"}
-            </spn>
+            </span>
           </p>
         </div>
       )}

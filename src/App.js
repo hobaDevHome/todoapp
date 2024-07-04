@@ -11,28 +11,59 @@ function App() {
   const [showAddTodo, setShowAddTodo] = useState(false);
 
   useEffect(() => {
-    const fetchTodos = async () => {
+    const fetchTodosFromAPI = async () => {
       const mockTodos = await new Promise((resolve) =>
         setTimeout(
           () =>
             resolve([
               {
-                id: Date.now(),
-                title: "Sample Todo",
-                description: "This is a sample description",
+                id: new Date(),
+                title: "Study React",
+                description: "Implementation of a React project",
                 completed: false,
               },
             ]),
           1000
         )
       );
-      setTodos(mockTodos);
+      return mockTodos;
+    };
+
+    // Function to fetch todos from local storage
+    const fetchTodosFromLocalStorage = () => {
+      const storedTodos = localStorage.getItem("todos");
+      return storedTodos ? JSON.parse(storedTodos) : [];
+    };
+
+    const fetchTodos = async () => {
+      const apiTodos = await fetchTodosFromAPI();
+      const localStorageTodos = fetchTodosFromLocalStorage();
+      const combinedTodos = [...localStorageTodos, ...apiTodos].reduce(
+        (acc, current) => {
+          const x = acc.find(
+            (item) =>
+              item.title === current.title &&
+              item.description === current.description
+          );
+          if (!x) {
+            return acc.concat([current]);
+          } else {
+            return acc;
+          }
+        },
+        []
+      );
+
+      setTodos(combinedTodos);
     };
     fetchTodos();
   }, []);
 
   const addTask = (todo) => {
-    setTodos([...todos, { ...todo, completed: false }]);
+    const newTodos = [...todos, { ...todo, completed: false }];
+    setTodos(newTodos);
+    console.log("new tasks added", newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
     setShowAddTodo(false);
   };
   const onCancel = () => {
@@ -41,15 +72,16 @@ function App() {
 
   const removeTodo = (index) => {
     const newTodos = todos.filter((e) => e.id !== index);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
     setTodos(newTodos);
   };
 
   const toggleTaskCompletion = (id) => {
-    setTodos(
-      todos.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
+    const newTodos = todos.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task
     );
+    setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   };
 
   const memoizedTodoList = useMemo(
