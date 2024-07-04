@@ -3,9 +3,12 @@ import TodoItem from "./TodoItem";
 import { motion } from "framer-motion";
 import "./TodoList.css";
 function TodoList({ todos, onRemove, onToggle }) {
+  // Filter incomplete todos
   const incompleteTodos = todos.filter((todo) => !todo.completed);
+  // Filter complete todos
   const completeTodos = todos.filter((todo) => todo.completed);
 
+  // Display message if no todos
   if (todos.length === 0) {
     return <div className="notodos">No tasks to display</div>;
   }

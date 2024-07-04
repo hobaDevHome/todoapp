@@ -11,13 +11,14 @@ function App() {
   const [showAddTodo, setShowAddTodo] = useState(false);
 
   useEffect(() => {
+    // Function to fetch todos from   API
     const fetchTodosFromAPI = async () => {
       const mockTodos = await new Promise((resolve) =>
         setTimeout(
           () =>
             resolve([
               {
-                id: new Date(),
+                id: new Date().getTime(),
                 title: "Study React",
                 description: "Implementation of a React project",
                 completed: false,
@@ -38,6 +39,8 @@ function App() {
     const fetchTodos = async () => {
       const apiTodos = await fetchTodosFromAPI();
       const localStorageTodos = fetchTodosFromLocalStorage();
+
+      // combine localTodos and localStorageTodos together and remove duplicates
       const combinedTodos = [...localStorageTodos, ...apiTodos].reduce(
         (acc, current) => {
           const x = acc.find(
@@ -62,10 +65,10 @@ function App() {
   const addTask = (todo) => {
     const newTodos = [...todos, { ...todo, completed: false }];
     setTodos(newTodos);
-    console.log("new tasks added", newTodos);
     localStorage.setItem("todos", JSON.stringify(newTodos));
     setShowAddTodo(false);
   };
+
   const onCancel = () => {
     setShowAddTodo(false);
   };

@@ -6,6 +6,7 @@ function AddTodo({ onAdd, onCancel }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !description) return;
